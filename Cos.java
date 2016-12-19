@@ -16,12 +16,18 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
- * @author Piotr
- */
+* <h1>GRA KULKA</h1>
+* Ta aplikacja to implementacja gry "Kulka" w języku Java. Ta klasa to
+* główna logika działania aplikacji.
+*
+* @author Piotr Kierzek i Michał Janczyk
+*/
 public class Cos {
+    /**
+    * Główna metoda aplikacji, obsługująca logikę programu.
+    * @param args Typowo dla main().
+    */
     public static void main(String[] args){ 
-        // wczytywanie z pliku musi być tutaj wywołane
         GameInfo.setInit(importConfig.importConfig());
         
         try {

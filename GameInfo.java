@@ -6,8 +6,9 @@
 package cos;
 
 /**
- *
- * @author Piotr
+ * Klasa zawierająca informacje o podstawowych parametrach gry.
+ * 
+ * @author Piotr Kierzek i Michał Janczyk
  */
 public class GameInfo {
     // deklarujemy zmienne informujące o informacjach dotyczących gry
@@ -20,6 +21,18 @@ public class GameInfo {
     static int points;
     static int levels;
     
+    /**
+     * Metoda nadająca wartości zaimportowane przez metodę {@link cos.importConfig#importConfig() } podstawowym parametrom aplikacji.
+     * @param values Wektor (w formie tablicy 1-wymiarowej int[]) zawierający podstawowe dane o grze, w kolejności: <br>
+     * difficulty - poziom trudności gry (0 - łatwe, 1 - średnie, 2 - trudne); <br>
+     * lives - startowa liczba żyć; <br>
+     * gamelength - początkowa wartość czasu dla gry; <br>
+     * numberofdeaths - początkowa liczba śmierci; <br>
+     * bonus - wielkość bonusu czasowego, który może zostać uzyskany przez gracza; <br>
+     * penaltyfordeath - czas doliczany za każdą śmierc; <br>
+     * points - początkowa liczba punktów; punkty liczone są na zasadzie czas+(l.śmierci*kara)-(l.bonusów*bonus); <br>
+     * levels - liczba poziomów w grze, po których następuje wymuszony koniec gry.
+     */
     public static void setInit(int[] values){
         // metoda inicjalizująca zmienne tak jak pan config przykazał
         difficulty = values[0];

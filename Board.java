@@ -17,13 +17,35 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 
-
+/**
+ * Klasa rysująca poziom.
+ * 
+ * @author Piotr Kierzek i Michał Janczyk
+ */
 public class Board extends JPanel {
     private Image[][] images = new Image[20][15]; // tworzę 2D tablicę pełną obiektów typu obraz, 20 rzędów x 15 kolumn
     
+    /**
+     * Konstruktor inicjujący planszę - importujący ją z pliku i rysujący.
+     * Wykonuje on automatycznie metodę initBoard().
+     */
     public Board() {initBoard();}
     
-    private static int[][] loadLevel() {
+    /**
+     * Metoda ładująca poziom z pliku.
+     * Poziom zapisany jest w formie tablicy zdefiniowanych wartości typu int.
+     * Metoda ta odczytuje go i zamienia na ładną, łatwo przetwarzalną tablicę dwuwymiarową int[][].
+     * @return Zwracana jest tablica 2-wymiarowa elementów typu int, która opisuje poziom. <br>
+     * <br>
+     * Zdefiniowane wartości int, które opisują bloki na planszy: <br>
+     * 0 - pusta przestrzeń;<br>
+     * 1 - wypełniony klocek bez dostępu dla kulki;<br>
+     * 2, 3, 4, 5 - trójkąt 45o, obrócony o 90o;<br>
+     * 6 - power-up;<br>
+     * 100 - pusta przestrzeń, z tego pola startuje kulka;<br>
+     * 252, 253, 254, 255 - klocki opisujące zakończenie poziomu.
+     */
+    public static int[][] loadLevel() {
         int[][] tempMatrix = new int[20][15];
         try {
             
@@ -46,7 +68,11 @@ public class Board extends JPanel {
         return tempMatrix;
     }
     
-    private void initBoard() {
+    /**
+     * Metoda rysująca poziom ze stworzonej przez {@link cos.Board#loadLevel() } tablicy int[][].
+     * Odwołuje się w formie pętli do metody ładującej obrazy korespondujące z blokami, czyli {@link cos.Board#loadImage(int, int, int) }.
+     */
+    public void initBoard() {
         int[][] map = new int[20][15];
         
         map = loadLevel();
@@ -60,7 +86,13 @@ public class Board extends JPanel {
         setPreferredSize(new Dimension(images[0][0].getWidth(this)*15, images[0][0].getHeight(this)*20)); // a tu to po prostu wymuszam wielkość rysowanego jFrame'a
     }
     
-    private void loadImage(int number, int arr1, int arr2) {
+    /**
+     * Metoda ładująca obrazek korespondujący z typem pola (bloku) budującego planszę.
+     * @param number Wartość odczytana z tablicy definiująca typ klocka.
+     * @param arr1 W którym wierszu znajduje się dany blok.
+     * @param arr2 W której kolumnie znajduje się dany blok.
+     */
+    public void loadImage(int number, int arr1, int arr2) {
         ImageIcon ii; // na stronie jakiejś wyczytałem sposób z wykorzystaniem tej klasy jako pośredniej między plikiem a obrazkiem w programie, więc wykorzystuję :x
         switch (number){
             default: ii = new ImageIcon("resources\\graphics\\0.png");
@@ -95,7 +127,10 @@ public class Board extends JPanel {
                     break;
         } 
     }
-    
+    /**
+     * Metoda rysująca bloki.
+     * @param g Graphics.
+     */
   @Override
     public void paintComponent(Graphics g) {
       for(int i = 0; i < 20; i++){

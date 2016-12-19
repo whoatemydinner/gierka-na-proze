@@ -9,8 +9,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 /**
+ * Klasa odpowiadająca za rysowanie i opis GUI.
  *
- * @author Piotr
+ * @author Piotr Kierzek i Michał Janczyk
  */
 public class window extends javax.swing.JFrame {
 

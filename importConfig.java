@@ -11,10 +11,25 @@ import java.io.InputStream;
 import java.util.Properties;
 
 /**
- *
- * @author Piotr
+ * Klasa zapewniająca import danych o grze z pliku konfiguracyjnego.
+ * 
+ * @author Piotr Kierzek i Michał Janczyk
  */
 public class importConfig {
+    /**
+     * Metoda importująca konfigurację gry z pliku zewnętrznego sformatowanego według następującej formy. <br>
+     * difficulty=1 <br>
+* lives=10 <br>
+* gamelength=48 <br>
+* numberofdeaths=2 <br>
+* bonus=3 <br>
+* penaltyfordeath=5 <br>
+* points=53 <br>
+* levels=10 <br>
+* Oczywiście same wartości mogą być inne.
+     * @return Zwracany jest wektor (w formie tablicy 1-wymiarowej int[]) z wartościami przekazywanymi następnie
+     * do zmiennych zdefiniowanych w klasie {@link cos.GameInfo}.
+     */
     public static int[] importConfig() {
         // korzystamy z Java Approved(TM) sposobu, na robienie configa
         // czyli pliku *.properties, w którym wszystko jest ładnie uporządkowane
